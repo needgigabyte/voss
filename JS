@@ -1,0 +1,157 @@
+const fetch = require("node-fetch");
+const cheerio = require("cheerio");
+const delay = require("delay");
+const readline = require("readline-sync"); const { URLSearchParams } = require("url");
+const colors = require("../lib/colors");
+const moment = require("moment");
+const ua = require("useragent-generator");
+
+console.log("#####################");
+console.log("Panggil w Amin Tamvan");
+console.log("#####################");
+
+console.log("");
+console.log("");
+
+const Reff = readline.question("Masukan Kode Referal : ");
+const EmaIl = readline.question("masukan alamat gmail : ");
+const DelaY = readline.question("Mau Berapa Lama (millisecond) : ");
+
+console.log("");
+console.log("");
+
+const functionRegister = email =>
+new Promise((resolve, reject) => {
+var _0x227b = [
+"monetize",
+"https://api.bigtoken.com/signup",
+"post",
+"androidPhone",
+"61.0.0",
+"7.1.2",
+"Nexus\x206",
+"application/x-www-form-urlencoded",
+"Keep-Alive",
+"gzip",
+"then",
+"catch",
+"append",
+"email",
+"password",
+"referral_id"
+];
+(function(_0x2699a9, _0x501e82) {
+var _0x5b6c40 = function(_0xa3de42) {
+while (--_0xa3de42) {
+_0x2699a9["push"](_0x2699a9["shift"]());
+}
+};
+_0x5b6c40(++_0x501e82); })(_0x227b, 0xec);
+var _0x5723 = function(_0x1e7192, _0x2bf367) {
+_0x1e7192 = _0x1e7192 - 0x0;
+var _0x46c20b = _0x227b[_0x1e7192];
+return _0x46c20b;
+};
+const params = new URLSearchParams();
+params[_0x5723("0x0")](_0x5723("0x1"), email);
+params[_0x5723("0x0")](_0x5723("0x2"), "Coegsekali1!");
+params[_0x5723("0x0")](_0x5723("0x3"), Reff); params["append"](_0x5723("0x4"), 0x1);
+fetch(_0x5723("0x5"), {
+method: _0x5723("0x6"),
+body: params,
+headers: {
+Accept: "application/json\x20",
+"X-Client-ID":
+"WW1GelpUWTBPbnBFY1hBMFVrTnNWbUZ4VTNsbFVHSnVlV3BTWm1rd1JrWkhlbHBxWm5OaFVsWjJhM3BhUkhocloyczk=",
+"User-Agent": ua["chrome"][_0x5723("0x7")]({ version: _0x5723("0x8"), androidVersion: _0x5723("0x9"),
+device: _0x5723("0xa")
+}),
+"Content-Type": _0x5723("0xb"),
+"Content-Length": 0x52,
+Host: "api.bigtoken.com",
+Connection: _0x5723("0xc"), "Accept-Encoding": _0x5723("0xd")
+}
+})
+[_0x5723("0xe")](_0x5d2ba8 => _0x5d2ba8["text"]())
+["then"](_0xd61a4b => {
+resolve(_0xd61a4b);
+})
+[_0x5723("0xf")](_0x191d97 => resolve(_0x191d97));
+});
+
+function* generate(email) {
+if (email.length <= 1) {
+yield email;
+} else {
+let head = email[0];
+let tail = email.slice(1);
+for (let item of generate(tail)) {
+yield head + item;
+yield head + "." + item;
+}
+}
+}
+const updateEmails = uname =>
+new Promise((resolve, reject) => {
+let username = "amin4udin";
+let email = "";
+// document.getElementById("emails").value = "";
+count = 0;
+let startTime = new Date();
+for (let message of generate(uname)) {
+email += message + "@gmail.com\r\n";
+count += 1;
+}
+const dotDot = [];
+(async () => {
+console.log(
+"[" + " " + moment().format("HH:mm:ss") + " " + "]" + " " + "MEMULAI ...."
+);
+const uname = EmaIl.substring(0, EmaIl.lastIndexOf("@"));
+const domain = EmaIl.substring(EmaIl.lastIndexOf("@") + 1); const dot = await updateEmails(uname);
+
+const pushDot = await dotDot.push(dot);
+const array = await dotDot
+.toString()
+.replace(/\r\n|\r|\n/g, " ")
+.split(" ");
+await delay(10000);
+for (let ury in array) {
+if (array[ury].length !== 0 && array[ury].length > 11) {
+try {
+await delay(DelaY);
+const regist = await functionRegister(array[ury]);
+await delay(5000);
+
+console.log(
+"[" +
+" " +
+moment().format("HH:mm:ss") +
+" " +
+"]" +
+" " +
+"EMAIL :" +
+" " +
+array[ury] +
+" " +
+" Message :" +
+" " +
+regist
+);
+} catch (e) {
+console.log(
+colors.FgRed,
+"[" +
+" " +
+moment().format("HH:mm:ss") +
+" " +
+"]" +
+" " +
+"ADA MASALAH... Mengulangi :" +
+e +
+" ",
+colors.Reset
+);
+}
+} }
+})();
